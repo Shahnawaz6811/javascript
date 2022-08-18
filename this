@@ -1,0 +1,13 @@
+- An arrow function doesn't have its own this value. 
+Instead, it uses the this value of the enclosing lexical scope. An arrow function also doesn't have the arguments object. Avoid using the arrow function for event handlers, object methods, 
+prototype methods, and functions that use the arguments object.
+
+function setTimer() {
+    setTimeout(() => {
+        // this here is lexically inherited from foo.
+        console.log(this.a);
+    }, 3000);
+}
+
+var obj3 = {a : 3};
+setTimer.bind(obj3);
